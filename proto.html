@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduCompo - Maquette</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Page d'accueil -->
+  <section id="page-accueil" class="h-screen flex flex-col items-center justify-center text-center p-6">
+    <h1 class="text-4xl font-bold text-blue-600 mb-4">EduCompo</h1>
+    <p class="text-gray-700 mb-6">Bienvenue sur ta plateforme de compo intelligente.<br>Chaque samedi, teste tes connaissances et vois tes résultats en direct !</p>
+    <input type="text" placeholder="Matricule étudiant" class="border rounded-lg p-2 w-64 mb-4" id="matricule">
+    <button id="btn-commencer" class="bg-blue-600 text-white px-6 py-2 rounded-xl shadow-lg hover:bg-blue-700 transition">Commencer la compo</button>
+  </section>
+
+  <!-- Page Quiz -->
+  <section id="page-quiz" class="hidden h-screen flex flex-col justify-between p-6">
+    <div class="flex justify-between items-center">
+      <h2 class="text-xl font-bold">Etudiant: <span class="text-blue-600" id="nom-etudiant">Kouadio</span></h2>
+      <span class="bg-red-500 text-white px-3 py-1 rounded-lg" id="chrono">Temps restant: 29:45</span>
+    </div>
+    <div class="mt-10">
+      <h3 class="text-2xl font-semibold mb-4" id="question">Q1: Quelle est la capitale de la Côte d’Ivoire ?</h3>
+      <textarea class="w-full border rounded-lg p-3" rows="4" placeholder="Tape ta réponse ici..."></textarea>
+    </div>
+    <div class="flex justify-end mt-6">
+      <button id="btn-suivant" class="bg-green-600 text-white px-6 py-2 rounded-xl shadow-lg hover:bg-green-700 transition">Suivant</button>
+    </div>
+  </section>
+
+  <!-- Page Résultats -->
+  <section id="page-resultats" class="hidden h-screen flex flex-col items-center justify-center p-6">
+    <h2 class="text-3xl font-bold text-gray-800 mb-4">Résultats</h2>
+    <p class="text-5xl font-extrabold text-blue-600 mb-4" id="score">16 / 20 🎉</p>
+    <p class="text-gray-700 mb-6" id="feedback">Bravo ! Tu as bien compris le chapitre. Révise juste la partie <span class="font-semibold">histoire</span> pour t’améliorer.</p>
+    <button id="btn-accueil" class="bg-blue-600 text-white px-6 py-2 rounded-xl shadow-lg hover:bg-blue-700 transition">Retour à l’accueil</button>
+  </section>
+
+  <script>
+  // Sélection des éléments
+  const pageAccueil = document.getElementById('page-accueil');
+  const pageQuiz = document.getElementById('page-quiz');
+  const pageResultats = document.getElementById('page-resultats');
+
+  const btnCommencer = document.getElementById('btn-commencer');
+  const btnAccueil = document.getElementById('btn-accueil');
+  const btnSuivant = document.getElementById('btn-suivant');
+
+  const scoreElem = document.getElementById('score');
+  const feedbackElem = document.getElementById('feedback');
+
+  // Début de la compo
+  btnCommencer.addEventListener('click', () => {
+    const matricule = document.getElementById('matricule').value;
+    if(matricule.trim() === ''){
+      alert('Veuillez entrer votre matricule.');
+      return;
+    }
+    document.getElementById('nom-etudiant').innerText = matricule;
+    pageAccueil.classList.add('hidden');
+    pageQuiz.classList.remove('hidden');
+  });
+
+  // Suivant → simulation score
+  btnSuivant.addEventListener('click', () => {
+    const totalQuestions = 20;
+    const points = Math.floor(Math.random() * (totalQuestions + 1)); // 0 à 20
+    scoreElem.innerText = `${points} / ${totalQuestions} 🎉`;
+
+    // Feedback
+    let feedback = '';
+    if(points === totalQuestions){
+      feedback = 'Excellent ! Tu as tout juste.';
+    } else if(points >= totalQuestions * 0.7){
+      feedback = 'Bien joué ! Quelques points à revoir.';
+    } else if(points >= totalQuestions * 0.4){
+      feedback = 'Tu progresses, révise certaines parties.';
+    } else {
+      feedback = 'Il faut revoir le chapitre, courage !';
+    }
+    feedbackElem.innerText = feedback;
+
+    pageQuiz.classList.add('hidden');
+    pageResultats.classList.remove('hidden');
+  });
+
+  // Retour à l'accueil
+  btnAccueil.addEventListener('click', () => {
+    pageResultats.classList.add('hidden');
+    pageAccueil.classList.remove('hidden');
+  });
+</script>
+
+</body>
+</html>

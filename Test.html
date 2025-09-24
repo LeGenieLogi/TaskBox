@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            body,html{
+                background: white;
+                height: 100%;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            header{
+                background-color: rgb(104, 104, 221);
+                color: white;
+                padding: 20px;
+                text-align: center;
+            }
+            main{
+                padding: 20px;
+                min-height: calc(100vh - 160px);
+                background-color: white;
+
+            }
+            footer{
+                width: 100%;
+                
+                background-color: rgb(104, 104, 221);
+                color: #ffffff;
+                text-align: center;
+                padding: 15px;
+                bottom: 0;
+            }
+            .task-container{
+                margin: auto;
+                padding: 20px;
+                border-radius: 10px;
+                background-color: white;
+                box-shadow: 0 0 15px black;
+                max-width: 1000px;
+            }
+            .form-group{
+                display: inline-block;
+                margin: 20px;
+
+            }
+            label{
+                padding: 60px;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 20px;
+            }
+            input{
+                display: inline-block;
+                margin-bottom: 20px;
+                height: 30px;
+                border: none;
+                background-color: #c5cbcb;
+                border-radius: 10px;
+                color: #ffffff;
+            }
+            .buttons{
+                display: flex;
+                margin: 30px;
+                justify-content: center;  
+            }
+            .submit{
+                margin-left: 30px;
+                background-color: rgb(102, 228, 104);
+                width: 150px;
+                border-radius: 10px;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 20px;
+                border: none;
+            }
+            .reset{
+                margin-right: 50px;
+                background-color: rgb(235, 116, 116);
+                width: 150px;
+                border-radius: 10px;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 20px;
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>TEST</h1>
+        </header>
+        <nav>
+            <div class="task-container">
+                <div class="form-group">
+                    <label for="fname">First_Name</label>
+                    <input type="text" id="name"><br>
+                    <label for="lname">Last_Name</label>
+                    <input type="text" id="lname"><br>
+                    <label for="email">Email</label>
+                    <input type="email" id="email"><br>
+                    <label for="passord">Pasword</label>
+                    <input type="password" id="passord">
+                </div>
+                <div class="form-group">
+                     <label for="fname">First_Name</label>
+                    <input type="text" id="name"><br>
+                    <label for="lname">Last_Name</label>
+                    <input type="text" id="lname"><br>
+                    <label for="email">Email</label>
+                    <input type="email" id="email"><br>
+                    <label for="passord">Pasword</label>
+                    <input type="password" id="passord">
+                </div>
+                <div class="buttons">
+                    <input type="reset" value="Reset" class="reset">
+                    <input type="submit" value="Submit" class="submit">
+                </div>
+            </div>
+        </nav>
+        <main></main>
+
+        <footer>
+            <p>&copy; 2025-2026</p>
+        </footer>
+        
+    </body>
+</html>
